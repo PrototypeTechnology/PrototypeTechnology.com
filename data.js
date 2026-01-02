@@ -42,7 +42,6 @@ window.siteData = {
         "Over 12 feet tall, and 22 feet wide. 4\" diameter Vertical Columns. 2\" diameter Horizontal Frame members. 10\" high Letters. Constructed in three sections for easy bolt-together assembly on site. Other sizes and styles available."
       ],
       media: {
-        type: "grid",
         items: [
           { label: "click to enlarge" }, 
           {
