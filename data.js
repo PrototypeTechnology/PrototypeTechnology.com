@@ -83,6 +83,41 @@ window.siteData = {
         ]
       }
     },
+{
+      title: "Test new project Hydrant Wrench",
+      paragraphs: [
+        "This Tool allows firefighters to operate hydrant valves that are recessed below ground. It combines a sturdy custom \"T\"-handle with a Heavy Duty Commercial 4-Point Socket.",
+        "Developed with Improvements from an existing Fire Department Specification tool."
+      ],
+      media: {
+        items: [
+          {
+            type: "image",
+            src: "900_100_0589.jpg",
+            label: "Underground hydrant wrench photo 1",
+            caption: "Custom heavy-duty T-handle with commercial 4-point socket"
+          },
+          {
+            type: "image",
+            src: "900_100_0589.jpg",
+            label: "Underground hydrant wrench photo 1",
+            caption: "Custom heavy-duty T-handle with commercial 4-point socket"
+          },
+          {
+            type: "image",
+            src: "900_100_0587.jpg",
+            label: "",
+            caption: "test caption image 2"
+          },
+          {
+            type: "image",
+            src: "900_100_0591.jpg",
+            label: "Underground hydrant wrench photo 3",
+            caption: "Custom heavy-duty T-handle with commercial 4-point socket"
+          }
+        ]
+      }
+    },
     {
       title: "Automatic Can Crusher",
       paragraphs: [
@@ -106,29 +141,6 @@ window.siteData = {
           }
         ]
       },
-      {
-      title: "Automatic Can Crusher",
-      paragraphs: [
-        "Crushes Aluminum Cans Effortlessly.",
-        "Just load a can into the chamber, then activate the control lever to actuate a pneumatic cylinder. A force of more than 1500 lbs reduces the can to 1/4\" tall."
-      ],
-      media: {
-        type: "single",
-        items: [
-          {
-            type: "video",
-            src: "Can_Crusher_clip.mp4",
-            label: "Automatic can crusher video",
-            caption: "test caption for video"
-          },
-          {
-            type: "image",
-            src: "900_100_0591.jpg",
-            label: "Underground hydrant wrench photo 3",
-            caption: "Custom heavy-duty T-handle with commercial 4-point socket"
-          }
-        ]
-      }
     },
   ]
 };
