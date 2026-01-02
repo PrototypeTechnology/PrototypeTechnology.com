@@ -3,150 +3,959 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ================= EDIT HERE ================= -->
+  <title>Prototype Technology</title>
   <style>
     :root {
-      --photo-url: url("logo.jpg");
-      --company-name: "Prototype Technology";
-      --tagline: "Do you have an idea for a new invention or product? Would you like to a have a one-of-a-kind, custom gadget, fixture, or unique object?";
-      --email: "hartline@usa.com";
+      --bg: #f5f9fc;
+      --surface: #ffffff;
+      --ink: #0f2535;
+      --ink-soft: #4b6a80;
+      --accent: #0e6fa8;
+      --accent-2: #0b4f78;
+      --line: #d6e2ec;
+      --shadow: 0 28px 60px -45px rgba(8, 32, 52, 0.35);
+      --radius: 18px;
+      --font-display: "Bahnschrift", "Franklin Gothic Book", "Arial Narrow", sans-serif;
+      --font-body: "Segoe UI", "Arial", sans-serif;
     }
-  </style>
-  <!-- ============================================ -->
 
-  <title>Prototype Technology</title>
-
-  <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: #0b0b0c;
-      color: #f2f2f3;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--bg);
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      position: relative;
     }
 
-    .wrap {
-      width: min(980px, 100%);
-      background: #141417;
-      border-radius: 18px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    /* IMAGE SIDE */
-    .left {
-      display: grid;
-      place-items: center;
-      padding: 32px;
-      background: radial-gradient(
-        circle at center,
-        rgba(255,255,255,0.05),
-        transparent 60%
-      );
-    }
-
-    .left::before {
+    body::before,
+    body::after {
       content: "";
-      width: 100%;
-      height: 100%;
-      background-image: var(--photo-url);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    /* CONTENT SIDE */
-    .right {
-      padding: 48px;
+    body::before {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(14, 111, 168, 0.18), transparent 45%),
+        radial-gradient(circle at 82% 12%, rgba(11, 79, 120, 0.16), transparent 45%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(235, 244, 251, 0.9));
+    }
+
+    body::after {
+      background-image:
+        linear-gradient(120deg, rgba(10, 74, 112, 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(10, 74, 112, 0.04) 1px, transparent 1px);
+      background-size: 90px 90px, 14px 14px;
+      opacity: 0.45;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 14px 30px -24px rgba(8, 32, 52, 0.45);
+      backdrop-filter: blur(8px);
+    }
+
+    .top-bar__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .top-title {
+      margin: 0;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.95rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    .top-bar .eyebrow {
+      margin: 0;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+    }
+
+    .top-bar .cta {
+      padding: 10px 16px;
+      font-size: 0.72rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 36px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-copy {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      justify-content: center;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 700;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(30px, 3.2vw, 44px);
-      letter-spacing: -0.02em;
-    }
-
-    h1::before {
-      content: var(--company-name);
-    }
-
-    .tagline {
-      font-size: 1.05rem;
-      line-height: 1.5;
-      color: rgba(242,242,243,0.75);
-      max-width: 42ch;
-    }
-
-    .tagline::before {
-      content: var(--tagline);
-    }
-
-    .email {
-      margin-top: 8px;
-      display: inline-block;
-      text-decoration: none;
-      color: #f2f2f3;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 4.6vw, 3.9rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       font-weight: 600;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    h1:empty {
+      display: none;
+    }
+
+    .lead {
+      margin: 0;
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      line-height: 1.65;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 600;
+      white-space: pre-line;
+      max-width: 50ch;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0e6fa8, #0b4f78);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
       width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      box-shadow: 0 18px 40px -30px rgba(8, 32, 52, 0.6);
     }
 
-    .email::before {
-      content: var(--email);
+    .cta:hover {
+      background: linear-gradient(135deg, #1182c2, #0a4c73);
     }
 
-    .email:hover {
-      border-color: rgba(110,231,255,0.6);
+    .cta-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      fill: currentColor;
     }
 
-    /* MOBILE */
-    @media (max-width: 820px) {
-      .wrap {
+    .hero-panel {
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(225, 236, 246, 0.9));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(14, 111, 168, 0.35);
+      border-radius: 14px;
+      opacity: 0.5;
+    }
+
+    .hero-panel img {
+      width: min(100%, 460px);
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      margin: 0 0 24px;
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .services {
+      margin-bottom: 36px;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.98), rgba(232, 242, 250, 0.95));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .services-title {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+      color: var(--accent-2);
+    }
+
+    .service-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .service-card li::before {
+      content: "* ";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .projects {
+      display: grid;
+      gap: 28px;
+    }
+
+    .project-card {
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.98), rgba(232, 242, 250, 0.95));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      gap: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .project-card.stacked {
+      grid-template-columns: 1fr;
+    }
+
+    .project-media {
+      display: grid;
+      gap: 14px;
+    }
+
+    .media-note {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .image-slot,
+    .image-grid figure {
+      margin: 0;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .image-box {
+      background: linear-gradient(145deg, rgba(248, 252, 255, 0.95), rgba(226, 238, 248, 0.95));
+      border: 1px dashed rgba(14, 111, 168, 0.4);
+      border-radius: 14px;
+      aspect-ratio: 4 / 3;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 16px;
+      color: rgba(14, 111, 168, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+    }
+
+    .media-video {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #0f2535;
+      box-shadow: var(--shadow);
+    }
+
+    .media-image {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      display: block;
+      object-fit: cover;
+      background: #eef4f9;
+      box-shadow: var(--shadow);
+    }
+
+    .carousel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .carousel-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: grid;
+      gap: 8px;
+      align-content: center;
+      justify-items: center;
+      padding: 4px;
+    }
+
+    .carousel-slide .image-box {
+      width: 100%;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      pointer-events: none;
+    }
+
+    .carousel-button {
+      pointer-events: auto;
+      border: none;
+      background: rgba(15, 37, 53, 0.75);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-button:hover {
+      background: rgba(15, 37, 53, 0.9);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .carousel-dot.is-active {
+      background: var(--accent);
+    }
+
+    .carousel-caption {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 24, 34, 0.86);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 50;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: min(1100px, 92vw);
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.8);
+      background: #0f2535;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: min(900px, 86vw);
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(15, 37, 53, 0.75);
+      color: #ffffff;
+      font-size: 0.9rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding: 28px 24px 36px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    figcaption {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .project-body h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .project-body p {
+      margin: 0 0 12px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .project-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-body .note {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .media-link {
+      margin: 0 0 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .media-link a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 111, 168, 0.4);
+    }
+
+    .media-link a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    @media (max-width: 960px) {
+      .top-bar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 20px;
+      }
+
+      .top-bar .cta {
+        align-self: flex-end;
+      }
+
+      .hero {
         grid-template-columns: 1fr;
       }
 
-      .left {
-        padding: 24px;
-        min-height: 260px;
+      .hero-panel {
+        order: -1;
       }
 
-      .right {
-        padding: 32px;
-        text-align: center;
-        align-items: center;
+      .project-card {
+        grid-template-columns: 1fr;
       }
 
-      .tagline {
-        max-width: 100%;
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 24px 18px 64px;
+      }
+
+      .project-card {
+        padding: 22px;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
-
 <body>
-  <main class="wrap">
-    <section class="left"></section>
+  <header class="top-bar">
+    <div class="top-bar__inner">
+      <div>
+        <p class="top-title" id="top-title"></p>
+        <p class="eyebrow" id="top-eyebrow"></p>
+      </div>
+      <a class="cta" id="top-contact" href="#"></a>
+    </div>
+  </header>
 
-    <section class="right">
-      <h1></h1>
-      <p class="tagline"></p>
-      <a class="email" href="mailto:hartline@usa.com"></a>
-    </section>
-  </main>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-copy">
+        <h1 id="hero-title"></h1>
+        <p class="lead" id="hero-lead"></p>
+      </div>
+      <div class="hero-panel">
+        <img id="hero-logo" src="" alt="" />
+      </div>
+    </header>
+
+    <main>
+      <section class="services" id="services">
+        <h2 class="services-title" id="services-title"></h2>
+        <div class="services-grid" id="services-grid"></div>
+      </section>
+      <h2 class="section-title" id="projects-title"></h2>
+      <section class="projects" id="projects"></section>
+    </main>
+    <footer class="footer">
+      <p class="footer-text" id="footer-text"></p>
+      <a class="cta" id="footer-contact" href="#"></a>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    (function () {
+      var data = window.siteData;
+      if (!data) {
+        return;
+      }
+
+      var topTitle = document.getElementById("top-title");
+      var topEyebrow = document.getElementById("top-eyebrow");
+      var topContact = document.getElementById("top-contact");
+      var title = document.getElementById("hero-title");
+      var lead = document.getElementById("hero-lead");
+      var logo = document.getElementById("hero-logo");
+      var servicesTitle = document.getElementById("services-title");
+      var servicesGrid = document.getElementById("services-grid");
+      var projectsTitle = document.getElementById("projects-title");
+      var projects = document.getElementById("projects");
+      var footerText = document.getElementById("footer-text");
+      var footerContact = document.getElementById("footer-contact");
+
+      topTitle.textContent = data.header.title;
+      topEyebrow.textContent = data.header.eyebrow;
+      function setContactButton(button, text, href) {
+        button.textContent = "";
+        button.href = href;
+        button.title = href.replace("mailto:", "");
+        button.setAttribute("aria-label", "Email " + href.replace("mailto:", ""));
+
+        var icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        icon.setAttribute("viewBox", "0 0 24 24");
+        icon.setAttribute("aria-hidden", "true");
+        icon.classList.add("cta-icon");
+        var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute(
+          "d",
+          "M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5 8-5V7H4zm16 10V9.1l-7.4 4.6a1 1 0 0 1-1.2 0L4 9.1V17h16z"
+        );
+        icon.appendChild(path);
+        button.appendChild(icon);
+
+        var label = document.createElement("span");
+        label.textContent = text;
+        button.appendChild(label);
+      }
+
+      setContactButton(topContact, data.header.contact.text, data.header.contact.href);
+      title.textContent = data.hero.title;
+      lead.textContent = data.hero.lead;
+      logo.src = data.hero.logo.src;
+      logo.alt = data.hero.logo.alt;
+      servicesTitle.textContent = data.services.title;
+      projectsTitle.textContent = data.sectionTitle;
+      var year = new Date().getFullYear();
+      footerText.textContent = "All rights reserved Prototype Technology " + year;
+      setContactButton(footerContact, data.header.contact.text, data.header.contact.href);
+
+      data.services.columns.forEach(function (column) {
+        var card = document.createElement("div");
+        card.className = "service-card";
+
+        var heading = document.createElement("h3");
+        heading.textContent = column.heading;
+        card.appendChild(heading);
+
+        var list = document.createElement("ul");
+        column.items.forEach(function (item) {
+          var li = document.createElement("li");
+          li.textContent = item;
+          list.appendChild(li);
+        });
+        card.appendChild(list);
+
+      servicesGrid.appendChild(card);
+    });
+
+      function createMediaNode(item) {
+        if (item && item.type === "video") {
+          var video = document.createElement("video");
+          video.className = "media-video";
+          video.src = item.src;
+          video.controls = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          if (item.label) {
+            video.setAttribute("aria-label", item.label);
+          }
+          if (item.poster) {
+            video.poster = item.poster;
+          }
+          return video;
+        }
+
+        if (item && item.src) {
+          var img = document.createElement("img");
+          img.className = "media-image";
+          img.src = item.src;
+          img.alt = item.label || "";
+          if (item.caption) {
+            img.setAttribute("data-caption", item.caption);
+          }
+          img.loading = "lazy";
+          return img;
+        }
+
+        var box = document.createElement("div");
+        box.className = "image-box";
+        box.textContent = item && item.label ? item.label : "";
+        return box;
+      }
+
+      function createCarousel(items) {
+        var carousel = document.createElement("div");
+        carousel.className = "carousel";
+
+        var viewport = document.createElement("div");
+        viewport.className = "carousel-viewport";
+        var track = document.createElement("div");
+        track.className = "carousel-track";
+        viewport.appendChild(track);
+        carousel.appendChild(viewport);
+
+        if (!items || !items.length) {
+          return carousel;
+        }
+
+        var slides = [];
+        items.forEach(function (item) {
+          var slide = document.createElement("div");
+          slide.className = "carousel-slide";
+          slide.appendChild(createMediaNode(item));
+          if (item && item.caption) {
+            var caption = document.createElement("p");
+            caption.className = "carousel-caption";
+            caption.textContent = item.caption;
+            slide.appendChild(caption);
+          }
+          track.appendChild(slide);
+          slides.push(slide);
+        });
+
+        var currentIndex = 0;
+        var dotButtons = [];
+
+        function update(index) {
+          if (!slides.length) {
+            return;
+          }
+          currentIndex = (index + slides.length) % slides.length;
+          track.style.transform = "translateX(-" + currentIndex * 100 + "%)";
+          dotButtons.forEach(function (dot, dotIndex) {
+            dot.classList.toggle("is-active", dotIndex === currentIndex);
+          });
+          slides.forEach(function (slide, slideIndex) {
+            if (slideIndex !== currentIndex) {
+              var video = slide.querySelector("video");
+              if (video) {
+                video.pause();
+              }
+            }
+          });
+        }
+
+        if (slides.length > 1) {
+          var controls = document.createElement("div");
+          controls.className = "carousel-controls";
+
+          var prevButton = document.createElement("button");
+          prevButton.type = "button";
+          prevButton.className = "carousel-button prev";
+          prevButton.setAttribute("aria-label", "Previous media");
+          prevButton.textContent = "‹";
+          prevButton.addEventListener("click", function () {
+            update(currentIndex - 1);
+          });
+
+          var nextButton = document.createElement("button");
+          nextButton.type = "button";
+          nextButton.className = "carousel-button next";
+          nextButton.setAttribute("aria-label", "Next media");
+          nextButton.textContent = "›";
+          nextButton.addEventListener("click", function () {
+            update(currentIndex + 1);
+          });
+
+          controls.appendChild(prevButton);
+          controls.appendChild(nextButton);
+          viewport.appendChild(controls);
+
+          var dots = document.createElement("div");
+          dots.className = "carousel-dots";
+          slides.forEach(function (_, index) {
+            var dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "carousel-dot";
+            dot.setAttribute("aria-label", "Go to media " + (index + 1));
+            dot.addEventListener("click", function () {
+              update(index);
+            });
+            dots.appendChild(dot);
+            dotButtons.push(dot);
+          });
+          carousel.appendChild(dots);
+        }
+
+        update(0);
+        return carousel;
+      }
+
+      var lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+      var lightboxImage = document.createElement("img");
+      var lightboxCaption = document.createElement("div");
+      lightboxCaption.className = "lightbox-caption";
+      var lightboxClose = document.createElement("button");
+      lightboxClose.className = "lightbox-close";
+      lightboxClose.type = "button";
+      lightboxClose.setAttribute("aria-label", "Close image");
+      lightboxClose.textContent = "×";
+      lightbox.appendChild(lightboxImage);
+      lightbox.appendChild(lightboxCaption);
+      lightbox.appendChild(lightboxClose);
+      document.body.appendChild(lightbox);
+
+      function openLightbox(src, alt, caption) {
+        lightboxImage.src = src;
+        lightboxImage.alt = alt || "";
+        lightboxCaption.textContent = caption || "";
+        lightboxCaption.style.display = caption ? "block" : "none";
+        lightbox.classList.add("is-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+        lightboxCaption.textContent = "";
+      }
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox || event.target === lightboxClose) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+      });
+
+      data.projects.forEach(function (project) {
+        var article = document.createElement("article");
+        article.className = "project-card" + (project.stacked ? " stacked" : "");
+
+        var media = document.createElement("div");
+        media.className = "project-media";
+
+        if (project.mediaNote) {
+          var note = document.createElement("p");
+          note.className = "media-note";
+          note.textContent = project.mediaNote;
+          media.appendChild(note);
+        }
+
+        if (project.media && project.media.items && project.media.items.length) {
+          var carousel = createCarousel(project.media.items);
+          carousel.addEventListener("click", function (event) {
+            var img = event.target.closest("img.media-image");
+            if (img) {
+              openLightbox(img.src, img.alt, img.getAttribute("data-caption"));
+            }
+          });
+          media.appendChild(carousel);
+        }
+
+        var body = document.createElement("div");
+        body.className = "project-body";
+
+        if (project.mediaLink) {
+          var mediaLink = document.createElement("p");
+          mediaLink.className = "media-link";
+          mediaLink.appendChild(document.createTextNode(project.mediaLink.label + " "));
+          var link = document.createElement("a");
+          link.href = project.mediaLink.href;
+          link.textContent = project.mediaLink.text;
+          mediaLink.appendChild(link);
+          body.appendChild(mediaLink);
+        }
+
+        var heading = document.createElement("h3");
+        heading.textContent = project.title;
+        body.appendChild(heading);
+
+        project.paragraphs.forEach(function (paragraph) {
+          var p = document.createElement("p");
+          p.textContent = paragraph;
+          body.appendChild(p);
+        });
+
+        if (project.note) {
+          var noteText = document.createElement("p");
+          noteText.className = "note";
+          noteText.textContent = project.note;
+          body.appendChild(noteText);
+        }
+
+        article.appendChild(media);
+        article.appendChild(body);
+        projects.appendChild(article);
+      });
+    })();
+  </script>
 </body>
 </html>
