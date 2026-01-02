@@ -105,7 +105,7 @@ window.siteData = {
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           }
         ]
-      }
+      },
       {
       title: "Automatic Can Crusher",
       paragraphs: [
