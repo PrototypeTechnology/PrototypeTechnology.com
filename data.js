@@ -106,6 +106,29 @@ window.siteData = {
           }
         ]
       }
+      {
+      title: "Automatic Can Crusher",
+      paragraphs: [
+        "Crushes Aluminum Cans Effortlessly.",
+        "Just load a can into the chamber, then activate the control lever to actuate a pneumatic cylinder. A force of more than 1500 lbs reduces the can to 1/4\" tall."
+      ],
+      media: {
+        type: "single",
+        items: [
+          {
+            type: "video",
+            src: "media/Can_Crusher_clip.mp4",
+            label: "Automatic can crusher video",
+            caption: "test caption for video"
+          },
+          {
+            type: "image",
+            src: "media/900_100_0591.jpg",
+            label: "Underground hydrant wrench photo 3",
+            caption: "Custom heavy-duty T-handle with commercial 4-point socket"
+          }
+        ]
+      }
     },
   ]
 };
