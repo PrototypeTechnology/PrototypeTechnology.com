@@ -64,19 +64,19 @@ window.siteData = {
         items: [
           {
             type: "image",
-            src: "media/900_100_0589.jpg",
+            src: "900_100_0589.jpg",
             label: "Underground hydrant wrench photo 1",
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           },
           {
             type: "image",
-            src: "media/900_100_0587.jpg",
+            src: "900_100_0587.jpg",
             label: "Underground hydrant wrench photo 2",
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           },
           {
             type: "image",
-            src: "media/900_100_0591.jpg",
+            src: "900_100_0591.jpg",
             label: "Underground hydrant wrench photo 3",
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           }
@@ -94,13 +94,13 @@ window.siteData = {
         items: [
           {
             type: "video",
-            src: "media/Can_Crusher_clip.mp4",
+            src: "Can_Crusher_clip.mp4",
             label: "Automatic can crusher video",
             caption: "test caption for video"
           },
           {
             type: "image",
-            src: "media/900_100_0591.jpg",
+            src: "900_100_0591.jpg",
             label: "Underground hydrant wrench photo 3",
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           }
@@ -117,13 +117,13 @@ window.siteData = {
         items: [
           {
             type: "video",
-            src: "media/Can_Crusher_clip.mp4",
+            src: "Can_Crusher_clip.mp4",
             label: "Automatic can crusher video",
             caption: "test caption for video"
           },
           {
             type: "image",
-            src: "media/900_100_0591.jpg",
+            src: "900_100_0591.jpg",
             label: "Underground hydrant wrench photo 3",
             caption: "Custom heavy-duty T-handle with commercial 4-point socket"
           }
